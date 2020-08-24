@@ -7,8 +7,8 @@ A multiuser todo app for collaboration.
 
  ``todoapp/static/todoapp/` contains templates.
  
- # To Run
+ ## To Run
  
  Download/clone the repo. (You should have django installed)
  
- Execute fromt the project root ``python3 manage.py runserver``
+ Execute from the project root : ``python3 manage.py runserver``
