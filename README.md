@@ -5,7 +5,7 @@ A multiuser todo app for collaboration.
 
 ``todoapp/static/todoapp/styles.css`` is the project's global css file.
 
- ``todoapp/static/todoapp/` contains templates.
+ ``todoapp/static/todoapp/`` contains HTML templates.
  
  ## To Run
  
