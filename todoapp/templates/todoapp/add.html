@@ -1,0 +1,26 @@
+{% extends "todoapp/layout.html" %}
+
+{% block body %}
+    <h1>Add Task</h1>
+    <form action="{% url 'add' %}" method="POST" style="border:2px solid green; width:250px; padding:10px">
+        {% csrf_token %}
+        <label for="title">Title:</label>
+        <br>
+        <input type="text" name="title">
+        <br><br>
+        <label for="desc">Description:</label>
+        <br>
+        <textarea name="desc" style="width:210px;"></textarea>
+        <br><br>
+        <label for="title">Urgency:</label>
+        <br>
+        <input type="text" name="urgency">
+        <br><br>
+        <label for="due">Due:</label>
+        <br>
+        <input type="date" name="due" value="due">
+        <br><br>
+        <input type="submit" value="Done" style="width:100px;">
+    </form>
+    
+{% endblock %}

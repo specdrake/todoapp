@@ -1,0 +1,31 @@
+{% extends "todoapp/layout.html" %}
+
+{% block body %}
+    <h1>Edit Task</h1>
+    <h2>Task {{ task.id }} : {{ task.title }} -> {{ task.desc }}</h2>
+    <form action="{% url 'edit' id %}" method="POST" style="border:2px solid green; width:250px; padding:10px">
+        {% csrf_token %}
+        <input hidden type="text" name="id" value="{{ id }}">
+        <label for="title">Title:</label>
+        <br>
+        <input type="text" name="title" value="{{ task.title }}">
+        <br><br>
+        <label for="desc">Description:</label>
+        <br>
+        <textarea name="desc" style="width:210px;">{{ task.desc }}</textarea>
+        <br><br>
+        <label for="title">Urgency:</label>
+        <br>
+        <input type="text" name="urgency" value="{{ task.urgency }}">
+        <br><br>
+        <label for="due">Due:</label>
+        <br>
+        <input type="date" name="due" value="{{ task.due }}">
+        <br><br>
+        <label for="delr" style="color: red;">Delete ?</label>
+        <input type="checkbox" name="delt" value="yes" style="color:red">
+        <br><br>
+        <input type="submit" value="Done" style="width:100px;">
+    </form>
+    
+{% endblock %}

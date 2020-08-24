@@ -1,0 +1,37 @@
+{% extends "todoapp/layout.html" %}
+
+{% block body %}
+    <h1>Tasks</h1>
+    {% if request.user.first_name %}
+    <h2>Hello, {{ request.user.first_name }} : {{ request.user.completed }}</h2>
+    {% else %}
+    <h2>Hello, {{ request.user.username }} : {{ request.user.completed }}</h2>
+    {% endif %}
+    <form action="{% url 'index' %}" method="POST">
+    {% csrf_token %}
+    <ul>
+        {% for task in tasks %}
+        {% if request.user in task.completed.all %}
+        <li>
+            <input type="hidden" name="complete" value="false">
+            <input type="checkbox" name="complete" value="true" checked>
+            <a href="{% url 'edit' task.id %}" style="color:black;">
+            <strike>Task {{ task.id }} : {{ task.title }} -> {{ task.desc }}</strike>
+            </a>
+        </li>
+        {% else %}
+        <li>
+            <input type="hidden" name="complete" value="false">
+            <input type="checkbox" name="complete" value="true">
+            <a href="{% url 'edit' task.id %}">
+             Task {{ task.id }} : {{ task.title }} -> {{ task.desc }}
+            </a>
+        </li>
+        {% endif %}
+        {% endfor %}
+    </ul>
+    <input type="submit" value="Update">
+    <br><br>
+    <a href="{% url 'add' %}" style="color:green">Add another</a>
+    </form>
+{% endblock %}

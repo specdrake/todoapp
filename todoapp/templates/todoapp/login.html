@@ -1,0 +1,18 @@
+{% extends "todoapp/layout.html" %}
+
+{% block body %}
+    <h1>Login</h1>
+    {% if mesg %}
+    <h2> {{ mesg }}  </h2>
+    {% endif %}
+    <form action="{% url 'login' %}" method="POST">
+        {% csrf_token %}
+        <!-- <input hidden type="text" name="id" value="{{ id }}"> -->
+        <input type="text" name="username" placeholder="Username" autocomplete="off">
+        <br><br>
+        <input type="password" name="password" placeholder="Password">
+        <br><br>
+        <input type="submit">
+    </form>
+    
+{% endblock %}
